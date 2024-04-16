@@ -11,6 +11,7 @@ Bundler.require(:test)
 RSpec.configure do |c|
   c.before(:suite) do
     CreateSchema.suppress_messages{ CreateSchema.migrate(:up) }
+    ActiveRecord.use_yaml_unsafe_load = true
   end
 
   c.after(:suite) do
